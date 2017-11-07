@@ -48,7 +48,7 @@ class Game
   end
 
   def check_for_victories
-    if board.three_equal_markers?
+    if board.has_winning_combinations?
       @status = "victory"
       congratulate(current_player.name)
     end

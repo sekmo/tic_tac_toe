@@ -51,7 +51,8 @@ class Board
 
   def has_winning_combinations?
     combinations.any? do |combination|
-      (combination[0].marker == combination[1].marker) && (combination[1].marker == combination[2].marker)
+      (combination[0].marked? && combination[0].marker == combination[1].marker &&
+        combination[1].marker == combination[2].marker)
     end
   end
 

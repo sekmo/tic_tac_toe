@@ -31,23 +31,23 @@ describe Board do
     expect(@board.drop_marker_at(1, "X")).to be(false)
   end
 
-  it "returns the rows" do
+  it "Returns the rows" do
     @board.drop_marker_at(2, "O")
     @board.drop_marker_at(3, "X")
     @board.drop_marker_at(4, "O")
     @board.drop_marker_at(6, "O")
     @board.drop_marker_at(8, "O")
     @board.drop_marker_at(9, "X")
-    expect(@board.rows[0].map { |cell| cell.to_s }).to match_array([1, "O", "X"])
-    expect(@board.rows[1].map { |cell| cell.to_s }).to match_array(["O", 5, "O"])
-    expect(@board.rows[2].map { |cell| cell.to_s }).to match_array([7, "O", "X"])
+    rows = @board.rows
+    expect(rows[0].map { |cell| cell.to_s }).to match_array([1, "O", "X"])
+    expect(rows[1].map { |cell| cell.to_s }).to match_array(["O", 5, "O"])
+    expect(rows[2].map { |cell| cell.to_s }).to match_array([7, "O", "X"])
   end
 
 
   it "Tells if there is a winning combination" do
     @board.drop_marker_at(1, "X")
     @board.drop_marker_at(2, "X")
-    expect(@board.has_winning_combinations?).to be(false)
-    #expect { @board.drop_marker_at(3, "X") }.to change { @board.has_three_equal_markers? }.from(false).to(true)
+    expect { @board.drop_marker_at(3, "X") }.to change { @board.has_winning_combinations? }.from(false).to(true)
   end
 end
