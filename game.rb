@@ -5,7 +5,7 @@ class Game
   PLAYER_1_MARKER = "X"
   PLAYER_2_MARKER = "O"
 
-  attr_reader :board, :players, :status, :current_player
+  attr_reader :board, :players, :status, :current_player, :played_turns
 
   def initialize
     @status = "not finished"
@@ -35,12 +35,12 @@ class Game
     ask_for_cell_number(current_player)
     @played_turns += 1
     board.display
-    update_status
+    update_status if played_turns >= 5
     switch_player if status == "not finished"
   end
 
   def update_status
-    check_for_victories if @played_turns > 4
+    check_for_victories
     if status != "victory" && board.full?
       @status = "draw"
       puts "Draw!"
