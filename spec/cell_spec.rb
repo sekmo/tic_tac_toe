@@ -12,6 +12,10 @@ describe Cell do
 
   it "Can be marked" do
     @cell.put_marker "X"
+  end
+
+  it "Tells if it's marked" do
+    @cell.put_marker "X"
     expect(@cell).to be_marked
   end
 end
