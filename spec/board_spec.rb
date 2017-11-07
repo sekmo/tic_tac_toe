@@ -1,5 +1,7 @@
 require "rspec"
 require File.expand_path("../../board", __FILE__)
+require File.expand_path("../support/board_helper", __FILE__)
+
 
 describe Board do
   before(:each) do
