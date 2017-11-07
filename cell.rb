@@ -2,7 +2,6 @@ class Cell
   attr_accessor :marker, :placeholder
 
   def initialize(placeholder)
-    @marker = nil
     @placeholder = placeholder
   end
 
@@ -13,7 +12,7 @@ class Cell
   end
 
   def marked?
-    marker
+    marker || false
   end
 
   def empty?
