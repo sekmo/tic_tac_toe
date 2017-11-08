@@ -1,6 +1,7 @@
 # Tic Tac Toe
 
-An implementation of "Tic Tac Toe" in Ruby, to experiment with TDD and OO design. Tests are written with RSpec.
+A Ruby implementation of "Tic Tac Toe", to get better at OO design and TDD.
+Tests are written with RSpec.
 
 ## Rules
 - 2 players in game
@@ -13,13 +14,15 @@ An implementation of "Tic Tac Toe" in Ruby, to experiment with TDD and OO design
 - A game is over when the status is "draw" or "victory"
 
 
-## Getting started
+## Getting started
 
 1. Clone this repo: `git clone https://github.com/sekmo/tic_tac_toe`
 
-2. Run `rspec` from the cloned directory to run the tests
+2. `cd` to the cloned directory
 
-3. Run `ruby tic_tac_toe.rb` to run the game
+3. Run `rspec` to perform the tests
+
+4. Run `ruby tic_tac_toe.rb` to run the game
 
 
 ## Domain model
@@ -49,21 +52,22 @@ An implementation of "Tic Tac Toe" in Ruby, to experiment with TDD and OO design
 
 ## How does it work?
 
-When running `tic_tac_toe.rb` we initialize a new Game instance, setting its status to "not finished", then we create a new board. Finally we ask for the player names and we assign a random player.
-We run turns calling the `#do_turn` on the game instance, until the game gets the status "victory" or "draw".
+When running `tic_tac_toe.rb` we initialize a new Game instance, setting its status to "not finished", then we assign to the game a new board. Finally we ask for the player names and we decide randomly which player comes first.
+
+We run turns calling `do_turn` on the game instance, until the game gets the "victory" or "draw" status.
 
 On every turn we ask the current player for a position to mark, then we switch the player at the end of the turn.
-Before switching the player for the next turn we check for any victories to congratulate to the current user.
+Before switching the player for the next turn we check for any victories to congratulate to the current user, and if the board is full and the game hasn't got the "victory" status, we set the game status to "draw".
 
 
 ## Considerations
 
-Currently the board has 9 empty cells when it's initialized, and when we send `drop_marker_at(1, "X")` to the board, it calls in turn `put_marker("X")` on its first cell.
-
-At the moment some classes are not very cohesive. For instance the `Game` class stores data and deal with IO. Maybe it would be nice to experiment with the "Entity- Boundary-Interactor" pattern.
+At the moment some classes are not very cohesive. For instance the `Game` class stores data and deals with IO. It might be interesting to experiment with the "Entity- Boundary-Interactor" pattern.
 
 
 ## Todo
 
-- Change `cells` for `positions` in Board, remove the `Cell` class
+- Rename `Cell` to `Position` (integrate position concept in Board?)
 - Get the first player to always have the "X" symbol
+- Extract the presentation from Board
+- Decouple the state from the presentation in Game
