@@ -25,7 +25,7 @@ Tests are written with RSpec.
 4. Run `ruby tic_tac_toe.rb` to run the game
 
 
-## Domain model
+## Domain model
 
 #### Player
 - Can be initialized with a name and a marker
@@ -65,9 +65,10 @@ Before switching the player for the next turn we check for any victories to cong
 At the moment some classes are not very cohesive. For instance the `Game` class stores data and deals with IO. It might be interesting to experiment with the "Entity- Boundary-Interactor" pattern.
 
 
-## Todo
+## Todo
 
 - Rename `Cell` to `Position` (integrate position concept in Board?)
 - Get the first player to always have the "X" symbol
 - Extract the presentation from Board
 - Decouple the state from the presentation in Game
+- Write feature tests to test interaction
